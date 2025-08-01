@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Property Marketplace</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0; padding: 0;
+      background: #f4f4f4;
+    }
+    header {
+      background: #333;
+      color: #fff;
+      padding: 1em;
+      text-align: center;
+    }
+    nav a {
+      margin: 0 15px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .container {
+      padding: 2em;
+    }
+    h2 {
+      color: #333;
+    }
+    .card {
+      background: white;
+      border: 1px solid #ccc;
+      padding: 1em;
+      margin: 1em 0;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Property Marketplace</h1>
+    <nav>
+      <a href="#buy">Buy</a>
+      <a href="#sell">Sell</a>
+      <a href="#rent">Rent</a>
+    </nav>
+  </header>
+
+  <div class="container">
+
+    <section id="buy">
+      <h2>Buy Properties</h2>
+      <div class="card">
+        <h3>2BHK Apartment in Mumbai</h3>
+        <p>₹85 Lakhs · 950 sqft · Near Andheri Station</p>
+      </div>
+      <div class="card">
+        <h3>Plot in Bangalore</h3>
+        <p>₹45 Lakhs · 1200 sqft · Whitefield</p>
+      </div>
+    </section>
+
+    <section id="sell">
+      <h2>Sell Your Property</h2>
+      <div class="card">
+        <p>Want to sell your flat or land? Contact us to list it here.</p>
+        <button onclick="alert('Feature coming soon!')">List Property</button>
+      </div>
+    </section>
+
+    <section id="rent">
+      <h2>Rent Properties</h2>
+      <div class="card">
+        <h3>1BHK for Rent in Pune</h3>
+        <p>₹12,000/month · Kothrud · Semi-furnished</p>
+      </div>
+      <div class="card">
+        <h3>Studio Apartment in Delhi</h3>
+        <p>₹18,000/month · Saket · Fully furnished</p>
+      </div>
+    </section>
+
+  </div>
+
+</body>
+</html>

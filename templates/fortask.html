@@ -1,0 +1,27 @@
+<html lang='en'>
+<head></head>
+<body>
+    <div> Insert Value
+    <form action="/addrecord" method="post"  class="form-outline w-25 mx-3 gap-3" id="form1">
+    <input type="text" name="a" class="form-control" placeholder="Caller Id" required >
+    <input type="text" name="b" class="form-control" placeholder="Call" required >
+    <input type="text" name="c" class="form-control" placeholder="Duration" required >
+    <button type="submit" class="btn btn-primary">Submit </button>
+    </form></div>
+    <div>
+        Update record
+        <form action="/update" method="post"  class="form-outline w-25 mx-3 gap-3" id="form1">
+        <input type="text" name="id" class="form-control" placeholder="Caller Id" required >
+        <input type="text" name="dur" class="form-control" placeholder="Duration" required >
+        <button type="submit" class="btn btn-primary">Update </button>
+        </form></div>
+    <div>
+        Delete record
+        <form action="/delete" method="post"  class="form-outline w-25 mx-3 gap-3" id="form1">
+        <input type="text" name="a" class="form-control" placeholder="Caller Id" required >
+        <button type="submit" class="btn btn-primary">Delete</button>
+        </form></div>
+
+        <a href='/fetch'> fetch
+        </a>
+</body>
