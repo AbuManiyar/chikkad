@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel='stylesheet' href="{{url_for('static', filename='css/style.css')}}">
+  <title>Property Listing Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0; padding: 20px;
+    }
+    h2 {
+      color: #333;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 5px;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 800px;
+      margin: auto;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+    .checkbox-group label {
+      font-weight: normal;
+    }
+    button {
+      background: #333;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #555;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Property Listing Form</h2>
+<form action="/RentSubmit" method="POST" enctype="multipart/form-data">
+
+  <!-- Owner Details -->
+  <h3>Owner Details</h3>
+  <label for="owner-name">Owner Name</label>
+  <input type="text" id="owner-name" name="owner_name" required>
+
+  <label for="owner-contact">Owner Contact Number *</label>
+  <input type="tel" id="owner-contact" name="owner_contact" pattern="[0-9]{10}" maxlength="10" required placeholder="Enter 10-digit number">
+  <small>Must be 10 digits</small>
+
+  <label for="owner-info">Owner Misc Information</label>
+  <textarea id="owner-info" name="owner_info" rows="3"></textarea>
+
+  <!-- Property Details -->
+  <h3>Property Details</h3>
+  <label for="location">Property Location</label>
+  <input type="text" id="location" name="property_location">
+
+  <label for="google-pin">Google Map Pin</label>
+  <input type="url" id="google-pin" name="google_pin" placeholder="Paste Google Maps Link">
+
+  <!-- Tenant Documentation -->
+  <h3>Documentation of Tenants</h3>
+  <div class="checkbox-group">
+    <label><input type="checkbox" name="docs[]" value="adhaar"> Aadhaar</label>
+    <label><input type="checkbox" name="docs[]" value="contact"> Contact</label>
+    <label><input type="checkbox" name="docs[]" value="govt-bond"> Govt Certified Bond</label>
+  </div>
+
+  <!-- Requirements -->
+  <h3>Tenant Requirements</h3>
+  <div class="checkbox-group">
+    <label><input type="checkbox" name="requirements[]" value="boys"> Only Boys</label>
+    <label><input type="checkbox" name="requirements[]" value="girls"> Only Girls</label>
+    <label><input type="checkbox" name="requirements[]" value="sharing"> Sharing</label>
+    <label><input type="checkbox" name="requirements[]" value="students"> Only Students</label>
+    <label><input type="checkbox" name="requirements[]" value="workers"> Workers</label>
+    <label><input type="checkbox" name="requirements[]" value="corporate"> Corporate Employees</label>
+    <label><input type="checkbox" name="requirements[]" value="couple"> Couple</label>
+    <label><input type="checkbox" name="requirements[]" value="family"> Family</label>
+    <label><input type="checkbox" name="requirements[]" value="bachelors"> Bachelors</label>
+    <label><input type="checkbox" name="requirements[]" value="separate"> Separate for Girls/Boys</label>
+  </div>
+
+  <!-- Rent Structure -->
+  <h3>Rent Structure</h3>
+  <label for="deposit">Deposit Amount</label>
+  <input type="number" id="deposit" name="deposit">
+
+  <label for="monthly-rent">Monthly Rent</label>
+  <input type="number" id="monthly-rent" name="monthly_rent">
+
+  <label for="maintenance">Monthly Maintenance</label>
+  <input type="number" id="maintenance" name="maintenance">
+
+  <label for="sharing-rent">If in Sharing, Monthly Rent</label>
+  <input type="number" id="sharing-rent" name="sharing_rent">
+
+  <!-- Restrictions -->
+  <h3>Restrictions</h3>
+  <div class="checkbox-group">
+    <label><input type="checkbox" name="restrictions[]" value="smoking"> Smoking</label>
+    <label><input type="checkbox" name="restrictions[]" value="music"> Music</label>
+    <label><input type="checkbox" name="restrictions[]" value="visitors"> Visitors</label>
+    <label><input type="checkbox" name="restrictions[]" value="veg"> Pure Vegetarian Only</label>
+    <label><input type="checkbox" name="restrictions[]" value="non-veg"> No Non-Veg</label>
+    <label><input type="checkbox" name="restrictions[]" value="cooking"> Cooking</label>
+    <label><input type="checkbox" name="restrictions[]" value="late-night"> Late Night Entry</label>
+    <label><input type="checkbox" name="restrictions[]" value="female-friends"> Female Friends</label>
+    <label><input type="checkbox" name="restrictions[]" value="male-friends"> Male Friends</label>
+    <label><input type="checkbox" name="restrictions[]" value="alcohol"> Alcohol</label>
+    <label><input type="checkbox" name="restrictions[]" value="delayed-payment"> Delay in Payment</label>
+  </div>
+
+  <!-- Facilities -->
+  <h3>Facilities</h3>
+  <div class="checkbox-group">
+    <label><input type="checkbox" name="facilities[]" value="electricity"> 24/7 Electricity</label>
+    <label><input type="checkbox" name="facilities[]" value="water"> 24/7 Raw Water Supply</label>
+    <label><input type="checkbox" name="facilities[]" value="drinking-water"> Drinking Water</label>
+    <label><input type="checkbox" name="facilities[]" value="parking"> Parking</label>
+    <label><input type="checkbox" name="facilities[]" value="bed1"> 1 Bed</label>
+    <label><input type="checkbox" name="facilities[]" value="bed-more"> More than 1 Bed</label>
+    <label><input type="checkbox" name="facilities[]" value="furnished"> Furnished</label>
+    <label><input type="checkbox" name="facilities[]" value="semi-furnished"> Semi-Furnished</label>
+    <label><input type="checkbox" name="facilities[]" value="unfurnished"> Not Furnished</label>
+    <label><input type="checkbox" name="facilities[]" value="fan"> Fan</label>
+    <label><input type="checkbox" name="facilities[]" value="lights"> Lights</label>
+    <label><input type="checkbox" name="facilities[]" value="lift"> Lift</label>
+    <label><input type="checkbox" name="facilities[]" value="laundry"> Cloth Washing Facilities</label>
+    <label><input type="checkbox" name="facilities[]" value="lawn"> Lawn Area</label>
+    <label><input type="checkbox" name="facilities[]" value="wifi"> Wifi Connection</label>
+    <label><input type="checkbox" name="facilities[]" value="ac"> A/C Room</label>
+    <label><input type="checkbox" name="facilities[]" value="play-store"> Play Store Room</label>
+  </div>
+
+  <!-- Media Upload -->
+  <h3>Media Upload</h3>
+  <label for="images">Property Images (Max 100MB)</label>
+  <input type="file" id="images" name="images" accept="image/*">
+
+  <label for="video">Property Video (Max 1GB)</label>
+  <input type="file" id="video" name="video" accept="video/*">
+
+  <label for="reel">Property Video Reel (Max 1GB)</label>
+  <input type="file" id="reel" name="reel" accept="video/*">
+
+  <button type="submit">Submit Property</button>
+</form>
+
+</body>
+</html>
