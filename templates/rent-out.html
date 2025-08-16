@@ -3,175 +3,174 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel='stylesheet' href="{{url_for('static', filename='css/style.css')}}">
   <title>Property Listing Form</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-      margin: 0; padding: 20px;
-    }
-    h2 {
-      color: #333;
-      border-bottom: 2px solid #ccc;
-      padding-bottom: 5px;
-    }
-    form {
-      background: white;
-      padding: 20px;
-      border-radius: 8px;
-      max-width: 800px;
-      margin: auto;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    label {
-      font-weight: bold;
-      display: block;
-      margin-top: 10px;
-    }
-    input, select, textarea {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    .checkbox-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-bottom: 15px;
-    }
-    .checkbox-group label {
-      font-weight: normal;
-    }
-    button {
-      background: #333;
-      color: white;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #555;
-    }
-  </style>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+        rel="stylesheet" 
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
+        crossorigin="anonymous">
 </head>
-<body>
+<body class="bg-light">
 
-<h2>Property Listing Form</h2>
-<form action="/RentSubmit" method="POST" enctype="multipart/form-data">
+<div class="container mt-5 mb-5">
+  <h2 class="mb-4 text-center">Property Listing Form</h2>
 
-  <!-- Owner Details -->
-  <h3>Owner Details</h3>
-  <label for="owner-name">Owner Name</label>
-  <input type="text" id="owner-name" name="owner_name" required>
+  <form action="/RentSubmit" method="POST" enctype="multipart/form-data" class="p-4 bg-white rounded shadow">
 
-  <label for="owner-contact">Owner Contact Number *</label>
-  <input type="tel" id="owner-contact" name="owner_contact" pattern="[0-9]{10}" maxlength="10" required placeholder="Enter 10-digit number">
-  <small>Must be 10 digits</small>
+    <!-- Owner Details -->
+    <h3 class="h5 mb-3">Owner Details</h3>
+    <div class="mb-3">
+      <label for="owner-name" class="form-label">Owner Name</label>
+      <input type="text" class="form-control" id="owner-name" name="owner_name" required>
+    </div>
 
-  <label for="owner-info">Owner Misc Information</label>
-  <textarea id="owner-info" name="owner_info" rows="3"></textarea>
+    <div class="mb-3">
+      <label for="owner-contact" class="form-label">Owner Contact Number *</label>
+      <input type="tel" class="form-control" id="owner-contact" name="owner_contact" 
+             pattern="[0-9]{10}" maxlength="10" required placeholder="Enter 10-digit number">
+      <div class="form-text">Must be 10 digits</div>
+    </div>
 
-  <!-- Property Details -->
-  <h3>Property Details</h3>
-  <label for="location">Property Location</label>
-  <input type="text" id="location" name="property_location">
+    <div class="mb-3">
+      <label for="owner-info" class="form-label">Owner Misc Information</label>
+      <textarea id="owner-info" name="owner_info" rows="3" class="form-control"></textarea>
+    </div>
 
-  <label for="google-pin">Google Map Pin</label>
-  <input type="url" id="google-pin" name="google_pin" placeholder="Paste Google Maps Link">
+    <!-- Property Details -->
+    <h3 class="h5 mb-3">Property Details</h3>
+    <div class="mb-3">
+      <label for="location" class="form-label">Property Location</label>
+      <input type="text" class="form-control" id="location" name="property_location">
+    </div>
 
-  <!-- Tenant Documentation -->
-  <h3>Documentation of Tenants</h3>
-  <div class="checkbox-group">
-    <label><input type="checkbox" name="docs[]" value="adhaar"> Aadhaar</label>
-    <label><input type="checkbox" name="docs[]" value="contact"> Contact</label>
-    <label><input type="checkbox" name="docs[]" value="govt-bond"> Govt Certified Bond</label>
-  </div>
+    <div class="mb-3">
+      <label for="google-pin" class="form-label">Google Map Pin</label>
+      <input type="url" class="form-control" id="google-pin" name="google_pin" placeholder="Paste Google Maps Link">
+    </div>
 
-  <!-- Requirements -->
-  <h3>Tenant Requirements</h3>
-  <div class="checkbox-group">
-    <label><input type="checkbox" name="requirements[]" value="boys"> Only Boys</label>
-    <label><input type="checkbox" name="requirements[]" value="girls"> Only Girls</label>
-    <label><input type="checkbox" name="requirements[]" value="sharing"> Sharing</label>
-    <label><input type="checkbox" name="requirements[]" value="students"> Only Students</label>
-    <label><input type="checkbox" name="requirements[]" value="workers"> Workers</label>
-    <label><input type="checkbox" name="requirements[]" value="corporate"> Corporate Employees</label>
-    <label><input type="checkbox" name="requirements[]" value="couple"> Couple</label>
-    <label><input type="checkbox" name="requirements[]" value="family"> Family</label>
-    <label><input type="checkbox" name="requirements[]" value="bachelors"> Bachelors</label>
-    <label><input type="checkbox" name="requirements[]" value="separate"> Separate for Girls/Boys</label>
-  </div>
+    <!-- Facilities -->
+    <h3 class="h5 mb-3">Facilities Available</h3>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="wifi" name="facilities" value="WiFi">
+          <label class="form-check-label" for="wifi">WiFi</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="water" name="facilities" value="Water">
+          <label class="form-check-label" for="water">Water</label>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="parking" name="facilities" value="Parking">
+          <label class="form-check-label" for="parking">Parking</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="security" name="facilities" value="Security">
+          <label class="form-check-label" for="security">Security</label>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="kitchen" name="facilities" value="Kitchen">
+          <label class="form-check-label" for="kitchen">Kitchen</label>
+        </div>
+      </div>
+    </div>
 
-  <!-- Rent Structure -->
-  <h3>Rent Structure</h3>
-  <label for="deposit">Deposit Amount</label>
-  <input type="number" id="deposit" name="deposit">
+    <!-- Restrictions -->
+    <h3 class="h5 mt-4 mb-3">Restrictions</h3>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="no-smoking" name="restrictions" value="No Smoking">
+          <label class="form-check-label" for="no-smoking">No Smoking</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="no-pets" name="restrictions" value="No Pets">
+          <label class="form-check-label" for="no-pets">No Pets</label>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="no-alcohol" name="restrictions" value="No Alcohol">
+          <label class="form-check-label" for="no-alcohol">No Alcohol</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="only-students" name="restrictions" value="Only Students">
+          <label class="form-check-label" for="only-students">Only Students</label>
+        </div>
+      </div>
+    </div>
 
-  <label for="monthly-rent">Monthly Rent</label>
-  <input type="number" id="monthly-rent" name="monthly_rent">
+    <!-- Requirements -->
+    <h3 class="h5 mt-4 mb-3">Tenant Requirements</h3>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="id-proof" name="requirements" value="ID Proof">
+          <label class="form-check-label" for="id-proof">ID Proof</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="deposit" name="requirements" value="Deposit">
+          <label class="form-check-label" for="deposit">Deposit</label>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="advance" name="requirements" value="Advance Payment">
+          <label class="form-check-label" for="advance">Advance Payment</label>
+        </div>
+      </div>
+    </div>
 
-  <label for="maintenance">Monthly Maintenance</label>
-  <input type="number" id="maintenance" name="maintenance">
+    <!-- Required Documents -->
+    <h3 class="h5 mt-4 mb-3">Required Documents</h3>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="aadhaar" name="documents" value="Aadhaar">
+          <label class="form-check-label" for="aadhaar">Aadhaar</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="pan" name="documents" value="PAN Card">
+          <label class="form-check-label" for="pan">PAN Card</label>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="passport" name="documents" value="Passport">
+          <label class="form-check-label" for="passport">Passport</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="voter" name="documents" value="Voter ID">
+          <label class="form-check-label" for="voter">Voter ID</label>
+        </div>
+      </div>
+    </div>
 
-  <label for="sharing-rent">If in Sharing, Monthly Rent</label>
-  <input type="number" id="sharing-rent" name="sharing_rent">
+    <!-- Media Upload -->
+    <h3 class="h5 mt-4 mb-3">Media Upload</h3>
+    <div class="mb-3">
+      <label for="images" class="form-label">Property Images (1 Required, Up to 5 Total)</label>
+      <input type="file" class="form-control" id="images" name="images" accept="image/*" multiple required 
+             onchange="if(this.files.length < 1 || this.files.length > 5) { alert('Please select between 1 and 5 images.'); this.value=''; }">
+    </div>
 
-  <!-- Restrictions -->
-  <h3>Restrictions</h3>
-  <div class="checkbox-group">
-    <label><input type="checkbox" name="restrictions[]" value="smoking"> Smoking</label>
-    <label><input type="checkbox" name="restrictions[]" value="music"> Music</label>
-    <label><input type="checkbox" name="restrictions[]" value="visitors"> Visitors</label>
-    <label><input type="checkbox" name="restrictions[]" value="veg"> Pure Vegetarian Only</label>
-    <label><input type="checkbox" name="restrictions[]" value="non-veg"> No Non-Veg</label>
-    <label><input type="checkbox" name="restrictions[]" value="cooking"> Cooking</label>
-    <label><input type="checkbox" name="restrictions[]" value="late-night"> Late Night Entry</label>
-    <label><input type="checkbox" name="restrictions[]" value="female-friends"> Female Friends</label>
-    <label><input type="checkbox" name="restrictions[]" value="male-friends"> Male Friends</label>
-    <label><input type="checkbox" name="restrictions[]" value="alcohol"> Alcohol</label>
-    <label><input type="checkbox" name="restrictions[]" value="delayed-payment"> Delay in Payment</label>
-  </div>
+    <div class="mb-3">
+      <label for="reel" class="form-label">Property Reel (Optional, MP4 only)</label>
+      <input type="file" class="form-control" id="reel" name="reel" accept="video/mp4">
+    </div>
 
-  <!-- Facilities -->
-  <h3>Facilities</h3>
-  <div class="checkbox-group">
-    <label><input type="checkbox" name="facilities[]" value="electricity"> 24/7 Electricity</label>
-    <label><input type="checkbox" name="facilities[]" value="water"> 24/7 Raw Water Supply</label>
-    <label><input type="checkbox" name="facilities[]" value="drinking-water"> Drinking Water</label>
-    <label><input type="checkbox" name="facilities[]" value="parking"> Parking</label>
-    <label><input type="checkbox" name="facilities[]" value="bed1"> 1 Bed</label>
-    <label><input type="checkbox" name="facilities[]" value="bed-more"> More than 1 Bed</label>
-    <label><input type="checkbox" name="facilities[]" value="furnished"> Furnished</label>
-    <label><input type="checkbox" name="facilities[]" value="semi-furnished"> Semi-Furnished</label>
-    <label><input type="checkbox" name="facilities[]" value="unfurnished"> Not Furnished</label>
-    <label><input type="checkbox" name="facilities[]" value="fan"> Fan</label>
-    <label><input type="checkbox" name="facilities[]" value="lights"> Lights</label>
-    <label><input type="checkbox" name="facilities[]" value="lift"> Lift</label>
-    <label><input type="checkbox" name="facilities[]" value="laundry"> Cloth Washing Facilities</label>
-    <label><input type="checkbox" name="facilities[]" value="lawn"> Lawn Area</label>
-    <label><input type="checkbox" name="facilities[]" value="wifi"> Wifi Connection</label>
-    <label><input type="checkbox" name="facilities[]" value="ac"> A/C Room</label>
-    <label><input type="checkbox" name="facilities[]" value="play-store"> Play Store Room</label>
-  </div>
+    <button type="submit" class="btn btn-primary w-100 mt-3">Submit Property</button>
+  </form>
+</div>
 
-  <!-- Media Upload -->
-  <h3>Media Upload</h3>
-  <label for="images">Property Images (Max 100MB)</label>
-  <input type="file" id="images" name="images" accept="image/*">
-
-  <label for="video">Property Video (Max 1GB)</label>
-  <input type="file" id="video" name="video" accept="video/*">
-
-  <label for="reel">Property Video Reel (Max 1GB)</label>
-  <input type="file" id="reel" name="reel" accept="video/*">
-
-  <button type="submit">Submit Property</button>
-</form>
-
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
+        crossorigin="anonymous"></script>
 </body>
 </html>
